@@ -1,0 +1,4 @@
+/* Assuming we can reuse variables from BookingModal.css or global.css */
+@import './BookingModal.css';
+
+/* Any specific Join Us modal styles if needed can go here */

@@ -1,0 +1,149 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0,18,68,0.75);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 22px;
+  width: 100%;
+  max-width: 660px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+  animation: fadeUp 0.3s ease;
+}
+.modal-header {
+  background: linear-gradient(135deg, #001B5E, #002C8C);
+  padding: 28px 32px;
+  border-radius: 22px 22px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.modal-header h2 { color: #fff; font-size: 22px; margin-bottom: 4px; }
+.modal-header p  { color: rgba(255,255,255,0.6); font-size: 13px; }
+.modal-close {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,0.2); }
+
+.modal-body { padding: 32px; }
+.modal-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 24px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--light);
+  font-family: 'Inter', sans-serif;
+}
+.modal-section-title:first-child { margin-top: 0; }
+.optional { font-weight: 400; color: var(--gray); letter-spacing: 0; text-transform: none; font-size: 11px; }
+
+.modal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.form-group label { font-size: 12px; font-weight: 600; color: var(--navy); letter-spacing: 0.3px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 11px 14px;
+  border: 2px solid var(--lgray);
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  color: var(--dark);
+  background: #fff;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--navy); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+
+/* CLEANER PICKER */
+.cleaner-hint { font-size: 13px; color: var(--gray); margin-bottom: 14px; }
+.cleaner-picker {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.cleaner-chip {
+  border: 2px solid var(--lgray);
+  border-radius: 12px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  background: #fff;
+}
+.cleaner-chip:hover { border-color: var(--navy); background: var(--light); }
+.cleaner-chip.chosen { border-color: var(--gold); background: rgba(255,193,7,0.05); }
+.chip-av {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  margin: 0 auto 7px;
+}
+.chip-name { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.chip-spec { font-size: 10px; color: var(--gray); }
+.chip-check {
+  position: absolute;
+  top: 6px; right: 8px;
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.modal-submit { width: 100%; justify-content: center; padding: 15px; font-size: 15px; }
+.modal-note { font-size: 12px; color: var(--gray); text-align: center; margin-top: 12px; }
+
+/* SUCCESS */
+.booking-success { text-align: center; padding: 32px 16px; }
+.success-check { font-size: 64px; color: var(--green); display: block; margin-bottom: 16px; }
+.booking-success h3 { font-size: 26px; color: var(--navy); margin-bottom: 10px; font-family: 'Inter', sans-serif; }
+.booking-success p { color: var(--gray); line-height: 1.75; font-size: 15px; }
+.btn-close-done {
+  display: block;
+  margin: 14px auto 0;
+  background: none; border: none;
+  color: var(--gray); font-size: 13px;
+  cursor: pointer; text-decoration: underline;
+  font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 600px) {
+  .modal-row { grid-template-columns: 1fr; }
+  .cleaner-picker { grid-template-columns: repeat(3, 1fr); }
+  .modal-body { padding: 20px; }
+}
