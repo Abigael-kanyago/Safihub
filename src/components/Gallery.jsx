@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import './Gallery.css';
 
 const items = [
-  { emoji: '🛋️', label: 'Living Room Cleaning',   span: 'tall' },
-  { emoji: '💼', label: 'Office Cleaning',         span: '' },
-  { emoji: '🍳', label: 'Kitchen Cleaning',         span: '' },
-  { emoji: '🏬', label: 'Commercial Cleaning',     span: 'wide' },
-  { emoji: '📦', label: 'Move Out Cleaning',       span: '' },
-  { emoji: '🪟', label: 'Window Cleaning',         span: 'tall' },
-  { emoji: '🚿', label: 'Bathroom Cleaning',       span: '' },
-  { emoji: '🏗️', label: 'Post-Construction',      span: '' },
+  { img: '/images/bedroom.jpg', label: 'Living Room Cleaning', span: 'tall' },
+  { img: '/images/cleaners_group1.jpg', label: 'Expert Team', span: '' },
+  { img: '/images/collage.jpg', label: 'Spotless Results', span: '' },
+  { emoji: '🏬', label: 'Commercial Cleaning', span: 'wide' },
+  { img: '/images/cleaners_group2.jpg', label: 'Professional Staff', span: '' },
+  { img: '/images/window_cleaning.jpg', label: 'Window Cleaning', span: 'tall' },
+  { emoji: '🚿', label: 'Bathroom Cleaning', span: '' },
+  { emoji: '✨', label: 'Satisfaction Guaranteed', span: '' },
 ];
 
 const colors = [
@@ -39,12 +39,12 @@ export default function Gallery() {
             <div
               key={i}
               className={`gallery-item${item.span ? ' ' + item.span : ''}${active === i ? ' zoomed' : ''}`}
-              style={{ background: colors[i % colors.length] }}
+              style={{ background: item.img ? `url(${item.img}) center/cover` : colors[i % colors.length] }}
               onMouseEnter={() => setActive(i)}
               onMouseLeave={() => setActive(null)}
             >
               <div className="gallery-overlay">
-                <span className="gallery-emoji">{item.emoji}</span>
+                {item.emoji && <span className="gallery-emoji">{item.emoji}</span>}
                 <span className="gallery-label">{item.label}</span>
               </div>
             </div>

@@ -11,39 +11,23 @@
 
 /* COLLAGE */
 .whyus-images { position: relative; }
-.img-collage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+.img-collage-wrapper {
   position: relative;
-}
-.img-box {
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  height: 170px;
-  font-size: 48px;
-  font-weight: 700;
-  color: #fff;
-  transition: transform 0.3s;
-  cursor: default;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
   box-shadow: var(--shadow);
 }
-.img-box:hover { transform: scale(1.04); }
-.img-box p {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: rgba(255,255,255,0.85);
-  font-family: 'Inter', sans-serif;
+.whyus-actual-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
-.img-box-1 { background: linear-gradient(135deg, #001B5E, #002C8C); }
-.img-box-2 { background: linear-gradient(135deg, #002C8C, #0048c8); background-position-y: 24px; }
-.img-box-3 { background: linear-gradient(135deg, #FFC107, #e6ac00); }
-.img-box-4 { background: linear-gradient(135deg, #001244, #001B5E); }
+.whyus-actual-img:hover {
+  transform: scale(1.03);
+}
 
 .cert-badge {
   position: absolute;

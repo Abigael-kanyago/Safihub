@@ -163,18 +163,24 @@
   border-radius: 24px;
   overflow: hidden;
 }
-.hero-img-placeholder {
+.hero-slide-img {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(160deg, #1a3a7a 0%, #001B5E 60%, #001244 100%);
-  display: flex; align-items: center; justify-content: center;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  transform: scale(1.05);
 }
-.hero-img-inner {
-  text-align: center;
-  color: rgba(255,255,255,0.4);
+.hero-slide-img.active {
+  opacity: 1;
+  animation: slowZoom 8s ease-in-out infinite alternate;
 }
-.hero-big-icon { font-size: 80px; display: block; margin-bottom: 12px; animation: float 4s ease-in-out infinite; }
-.hero-img-inner p { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-.hero-img-inner small { font-size: 12px; }
+
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
 
 .gold-curve {
   position: absolute;

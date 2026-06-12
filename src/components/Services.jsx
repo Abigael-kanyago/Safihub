@@ -5,6 +5,7 @@ import './Services.css';
 const services = [
   {
     icon: <FaHome />,
+    img: '/images/bedroom.jpg',
     title: 'Residential Cleaning',
     desc: 'Deep cleaning for homes that shine and feel refreshing. We handle every corner — from kitchen to bathroom — with expert care.',
     price: 'From KSh 1,200',
@@ -13,6 +14,7 @@ const services = [
   },
   {
     icon: <FaBuilding />,
+    img: '/images/window_cleaning.jpg',
     title: 'Office Cleaning',
     desc: 'Clean, organized workspaces that boost productivity. Daily, weekly or one-time deep clean packages available.',
     price: 'Custom Quote',
@@ -21,6 +23,7 @@ const services = [
   },
   {
     icon: <FaWarehouse />,
+    img: '/images/cleaners_group2.jpg',
     title: 'Commercial Cleaning',
     desc: 'Professional cleaning for shops, buildings and commercial spaces. Flexible scheduling around your business hours.',
     price: 'Custom Quote',
@@ -29,6 +32,7 @@ const services = [
   },
   {
     icon: <FaTruck />,
+    img: '/images/cleaners_group1.jpg',
     title: 'Move In/Out Cleaning',
     desc: 'Move in or move out with a spotless space, stress-free. We ensure your deposit back or your new home sparkles.',
     price: 'From KSh 2,500',
@@ -60,7 +64,8 @@ export default function Services({ onBookNow }) {
             >
               <div className="service-card-inner">
                 {/* Image placeholder */}
-                <div className="service-img" style={{ background: s.color }}>
+                <div className="service-img" style={{ backgroundImage: `url(${s.img})` }}>
+                  <div className="service-img-overlay"></div>
                   <div className="service-img-icon">{s.icon}</div>
                   {s.tag && <span className="service-tag">{s.tag}</span>}
                 </div>

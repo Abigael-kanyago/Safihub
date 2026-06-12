@@ -11,11 +11,7 @@ export default function Footer({ onBookNow }) {
             {/* Brand */}
             <div className="footer-brand">
               <div className="footer-logo">
-                <div className="f-logo-icon">S</div>
-                <div>
-                  <div className="f-logo-name">SAFISPACE</div>
-                  <div className="f-logo-sub">CLEANING SERVICE</div>
-                </div>
+                <img src="/images/logo.jpg" alt="SafiSpace Logo" className="footer-logo-image" />
               </div>
               <p>Reliable. Professional. Spotless. Your trusted cleaning partner across Nairobi and beyond.</p>
               <div className="footer-socials">

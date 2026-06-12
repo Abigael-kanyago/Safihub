@@ -33,14 +33,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--card-bg, #e8f0fe);
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
+}
+.service-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 27, 94, 0.4);
   transition: background 0.3s;
 }
+.service-card:hover .service-img-overlay {
+  background: rgba(0, 27, 94, 0.2);
+}
 .service-img-icon {
+  position: relative;
+  z-index: 2;
   font-size: 56px;
-  color: var(--navy);
-  opacity: 0.18;
+  color: #fff;
+  opacity: 0.6;
   transition: transform 0.4s, opacity 0.4s;
 }
 .service-card:hover .service-img-icon {

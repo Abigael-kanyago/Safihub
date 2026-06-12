@@ -28,12 +28,7 @@ export default function Navbar({ onBookNow, onJoinUs }) {
       <div className="nav-container">
         {/* Logo */}
         <a href="#home" className="nav-logo" onClick={() => setActive('Home')}>
-          <div className="logo-icon">S</div>
-          <div className="logo-text">
-            <span className="logo-name">SAFISPACE</span>
-            <span className="logo-sub">CLEANING SERVICE</span>
-            <span className="logo-tag">Reliable. Professional. Spotless.</span>
-          </div>
+          <img src="/images/logo.jpg" alt="SafiSpace Logo" className="logo-image" />
         </a>
 
         {/* Desktop Nav */}

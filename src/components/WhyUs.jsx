@@ -18,19 +18,8 @@ export default function WhyUs() {
         <div className="whyus-inner">
           {/* Left image collage */}
           <div className="whyus-images reveal">
-            <div className="img-collage">
-              <div className="img-box img-box-1">
-                <span>🏠</span><p>Residential</p>
-              </div>
-              <div className="img-box img-box-2">
-                <span>🏢</span><p>Commercial</p>
-              </div>
-              <div className="img-box img-box-3">
-                <span>✨</span><p>Deep Clean</p>
-              </div>
-              <div className="img-box img-box-4">
-                <span>🏗️</span><p>Construction</p>
-              </div>
+            <div className="img-collage-wrapper">
+              <img src="/images/collage.jpg" alt="Safispace Cleaning Examples" className="whyus-actual-img" />
               {/* Floating cert badge */}
               <div className="cert-badge">
                 <span className="cert-num">500+</span>
