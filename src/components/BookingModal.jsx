@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaTimes, FaCheckCircle } from 'react-icons/fa';
 import './BookingModal.css';
+import { supabase } from '../supabaseClient';
 
 const services = [
   'Studio / Bedsitter Cleaning',
@@ -16,10 +17,10 @@ const services = [
 ];
 
 const cleaners = [
-  { initials: 'FW', name: 'Faith Wanjiku',  spec: 'Residential' },
-  { initials: 'JM', name: 'James Mwangi',   spec: 'Office & Commercial' },
-  { initials: 'GA', name: 'Grace Akinyi',   spec: 'Deep Cleaning' },
-  { initials: 'BO', name: 'Brian Otieno',   spec: 'Post-Construction' },
+  { initials: 'FW', name: 'Faith Wanjiku', spec: 'Residential' },
+  { initials: 'JM', name: 'James Mwangi', spec: 'Office & Commercial' },
+  { initials: 'GA', name: 'Grace Akinyi', spec: 'Deep Cleaning' },
+  { initials: 'BO', name: 'Brian Otieno', spec: 'Post-Construction' },
 ];
 
 const INITIAL = { name: '', phone: '', email: '', location: '', service: '', date: '', time: '', freq: 'One-time', notes: '', cleaner: '', customSize: '' };
@@ -27,7 +28,46 @@ const INITIAL = { name: '', phone: '', email: '', location: '', service: '', dat
 export default function BookingModal({ open, onClose, preService }) {
   const [form, setForm] = useState(INITIAL);
   const [done, setDone] = useState(false);
+  const [cleanersList, setCleanersList] = useState(cleaners);
+  const [servicesList, setServicesList] = useState(services);
+  const [fullServices, setFullServices] = useState([]);
+
+  // NEW: State to hold our dynamically generated WhatsApp link
+  const [whatsappLink, setWhatsappLink] = useState('https://wa.me/254700000000');
+
   const today = new Date().toISOString().split('T')[0];
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const { data: dbCleaners, error: cleanersErr } = await supabase
+          .from('cleaners')
+          .select('*');
+        if (!cleanersErr && dbCleaners && dbCleaners.length > 0) {
+          const mappedCleaners = dbCleaners.map(c => ({
+            id: c.id,
+            initials: c.full_name ? c.full_name.split(' ').map(n => n[0]).join('').toUpperCase() : 'C',
+            name: c.full_name,
+            spec: c.phone ? `Phone: ${c.phone}` : 'Verified Cleaner',
+            rating: c.rating
+          }));
+          setCleanersList(mappedCleaners);
+        }
+
+        const { data: dbServices, error: servicesErr } = await supabase
+          .from('services')
+          .select('*');
+        if (!servicesErr && dbServices && dbServices.length > 0) {
+          const mappedServices = dbServices.map(s => s.name);
+          setServicesList(mappedServices);
+          setFullServices(dbServices);
+        }
+      } catch (err) {
+        console.error('Error loading Supabase data:', err);
+      }
+    }
+    loadData();
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -43,9 +83,90 @@ export default function BookingModal({ open, onClose, preService }) {
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const pickCleaner = (name) => setForm({ ...form, cleaner: form.cleaner === name ? '' : name });
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.location || !form.service || !form.date) return;
+
+    const selectedCleanerObj = cleanersList.find(c => c.name === form.cleaner);
+    const selectedCleanerId = selectedCleanerObj && selectedCleanerObj.id ? selectedCleanerObj.id : null;
+
+    const selectedServiceObj = fullServices.find(s => s.name === form.service);
+    const selectedServiceId = selectedServiceObj && selectedServiceObj.id ? selectedServiceObj.id : null;
+
+    let scheduledAt = null;
+    if (form.date) {
+      let hour = "08:00:00";
+      if (form.time && form.time.toLowerCase().includes('midday')) {
+        hour = "12:00:00";
+      } else if (form.time && form.time.toLowerCase().includes('afternoon')) {
+        hour = "15:00:00";
+      }
+      scheduledAt = `${form.date}T${hour}Z`;
+    }
+
+    let returnedRow = null; // Store the returned database record here
+
+    try {
+      const { data, error } = await supabase
+        .from('bookings')
+        .insert([
+          {
+            customer_name: form.name,
+            phone_number: form.phone,
+            email: form.email || null,
+            location: form.location,
+            space_config: form.service,
+            booking_date: form.date,
+            time_slot: form.time || 'Any time',
+            frequency: form.freq,
+            cleaner_id: selectedCleanerId
+          }
+        ])
+        .select(); // <-- CRITICAL: Tells Supabase to return the generated data
+
+      if (error) throw error;
+      returnedRow = data[0];
+      console.log('Booking saved successfully:', returnedRow);
+
+    } catch (err) {
+      console.warn('Initial insert failed, attempting fallback to normalized schema:', err.message);
+
+      try {
+        const fallbackPayload = {
+          customer_name: form.name,
+          service_id: selectedServiceId,
+          cleaner_id: selectedCleanerId,
+          scheduled_at: scheduledAt,
+          status: 'pending'
+        };
+
+        const { data, error } = await supabase
+          .from('bookings')
+          .insert([fallbackPayload])
+          .select(); // <-- CRITICAL: Appended here too
+
+        if (error) throw error;
+        returnedRow = data[0];
+        console.log('Booking saved successfully via fallback schema:', returnedRow);
+
+      } catch (fallbackErr) {
+        console.error('All insert attempts failed:', fallbackErr.message);
+        return; // Stop execution, don't show success screen if nothing saved
+      }
+    }
+
+    // --- GENERATE DYNAMIC WHATSAPP LINK ---
+    if (returnedRow) {
+      const safiSpacePhone = "254700000000"; // Replace with actual business number
+      // Grab the first 8 characters of the UUID to make a clean reference number
+      const bookingRef = returnedRow.id ? returnedRow.id.substring(0, 8) : "N/A";
+
+      const message = `🌟 Hello SafiSpace!\n\nI have just placed a new booking online.\n*Reference ID:* #${bookingRef}\n*Name:* ${form.name}\n*Location:* ${form.location}\n*Service:* ${form.service}\n\nPlease confirm my schedule!`;
+
+      const dynamicUrl = `https://wa.me/${safiSpacePhone}?text=${encodeURIComponent(message)}`;
+      setWhatsappLink(dynamicUrl);
+    }
+
     setDone(true);
   };
 
@@ -68,9 +189,12 @@ export default function BookingModal({ open, onClose, preService }) {
               <FaCheckCircle className="success-check" />
               <h3>Booking Received!</h3>
               <p>Thank you, {form.name}! We'll confirm via WhatsApp or email within 30 minutes.</p>
-              <a href="https://wa.me/254700000000" target="_blank" rel="noreferrer" className="btn-primary" style={{ display: 'inline-flex', gap: 8, marginTop: 20 }}>
+
+              {/* This anchor tag now uses the dynamic state link */}
+              <a href={whatsappLink} target="_blank" rel="noreferrer" className="btn-primary" style={{ display: 'inline-flex', gap: 8, marginTop: 20 }}>
                 💬 Chat on WhatsApp
               </a>
+
               <button className="btn-close-done" onClick={onClose}>Close</button>
             </div>
           ) : (
@@ -103,7 +227,7 @@ export default function BookingModal({ open, onClose, preService }) {
                   <label>Service Type *</label>
                   <select name="service" value={form.service} onChange={handle} required>
                     <option value="">-- Select a service --</option>
-                    {services.map(s => <option key={s}>{s}</option>)}
+                    {servicesList.map(s => <option key={s}>{s}</option>)}
                   </select>
                 </div>
                 <div className="form-group">
@@ -145,7 +269,7 @@ export default function BookingModal({ open, onClose, preService }) {
               <div className="modal-section-title">Choose Your Cleaner <span className="optional">(optional)</span></div>
               <p className="cleaner-hint">Select a preferred cleaner or leave blank and we'll assign the best available.</p>
               <div className="cleaner-picker">
-                {cleaners.map(c => (
+                {cleanersList.map(c => (
                   <div
                     key={c.name}
                     className={`cleaner-chip${form.cleaner === c.name ? ' chosen' : ''}`}

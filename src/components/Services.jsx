@@ -76,7 +76,12 @@ export default function Services({ onBookNow }) {
                   <p className="service-desc">{s.desc}</p>
                   <div className="service-footer">
                     <span className="service-price">{s.price}</span>
-                    <button className="service-btn" onClick={onBookNow}>Book Now →</button>
+                    <button className="service-btn" onClick={() => {
+                      let mappedService = s.title;
+                      if (s.title === 'Residential Cleaning') mappedService = 'Residential – 1 Bedroom'; // Or a default residential option
+                      if (s.title === 'Move In/Out Cleaning') mappedService = 'Move In / Move Out Cleaning';
+                      onBookNow(mappedService);
+                    }}>Book Now →</button>
                   </div>
                 </div>
               </div>
