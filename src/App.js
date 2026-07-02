@@ -29,9 +29,9 @@ export default function App() {
       <Hero onBookNow={() => openBooking()} />
       <Stats />
       <Services onBookNow={openBooking} />
+      <JoinUsCTA onJoinUs={() => setJoinUsOpen(true)} />
       <WhyUs />
       <Contact />
-      <JoinUsCTA onJoinUs={() => setJoinUsOpen(true)} />
       <Footer onBookNow={() => openBooking()} />
 
       <BookingModal

@@ -1,27 +1,50 @@
 import React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
+import './JoinUsCTA.css';
+import { FaArrowRight, FaCheckCircle, FaStar } from 'react-icons/fa';
 
 export default function JoinUsCTA({ onJoinUs }) {
   return (
-    <section style={{ 
-      background: 'linear-gradient(135deg, var(--navy), var(--navy2))', 
-      padding: '60px 20px', 
-      textAlign: 'center', 
-      color: 'white',
-      borderTop: '5px solid var(--green)'
-    }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '36px', marginBottom: '16px', fontWeight: '800' }}>Are you a professional cleaner?</h2>
-        <p style={{ fontSize: '18px', opacity: 0.9, marginBottom: '32px', lineHeight: '1.6' }}>
-          Join our verified network of Safihub cleaners. Enjoy flexible working hours, great pay, and a supportive community.
-        </p>
-        <button 
-          onClick={onJoinUs} 
-          className="btn-green-full" 
-          style={{ padding: '16px 32px', fontSize: '18px', display: 'inline-flex', gap: '10px' }}
-        >
-          Apply to Join Us <FaArrowRight />
-        </button>
+    <section className="join-cta-section">
+      <div className="join-cta-container">
+        
+        {/* Left Side: Creative Visual */}
+        <div className="join-cta-visual">
+          <div className="visual-backdrop"></div>
+          <img 
+            src={`${process.env.PUBLIC_URL}/images/hero_1.jpg`} 
+            alt="Professional Cleaner" 
+            className="visual-image" 
+          />
+          {/* Floating elements for creativity */}
+          <div className="floating-badge top-badge">
+            <FaStar className="badge-icon gold" />
+            <div className="badge-text">Top Earners</div>
+          </div>
+          <div className="floating-badge bottom-badge">
+            <FaCheckCircle className="badge-icon green" />
+            <div className="badge-text">Verified</div>
+          </div>
+        </div>
+
+        {/* Right Side: Content */}
+        <div className="join-cta-content">
+          <h4 className="cta-subtitle">CAREERS AT SAFIHUB</h4>
+          <h2 className="cta-title">Are you a professional cleaner?</h2>
+          <p className="cta-desc">
+            Join Nairobi's most trusted and elite cleaning network. Enjoy flexible working hours, guaranteed consistent pay, and a community that supports your growth.
+          </p>
+          
+          <ul className="cta-benefits">
+            <li><FaCheckCircle className="benefit-icon" /> Be your own boss & choose your hours</li>
+            <li><FaCheckCircle className="benefit-icon" /> Premium rates and fast weekly payouts</li>
+            <li><FaCheckCircle className="benefit-icon" /> Access to high-end verified clients</li>
+          </ul>
+
+          <button onClick={onJoinUs} className="btn-join-creative">
+            Apply to Join Us <FaArrowRight />
+          </button>
+        </div>
+
       </div>
     </section>
   );
