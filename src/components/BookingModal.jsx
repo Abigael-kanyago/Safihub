@@ -157,13 +157,13 @@ export default function BookingModal({ open, onClose, preService }) {
 
     // --- GENERATE DYNAMIC WHATSAPP LINK ---
     if (returnedRow) {
-      const safiSpacePhone = "254700000000"; // Replace with actual business number
+      const safihubPhone = "254700000000"; // Replace with actual business number
       // Grab the first 8 characters of the UUID to make a clean reference number
       const bookingRef = returnedRow.id ? returnedRow.id.substring(0, 8) : "N/A";
 
-      const message = `🌟 Hello SafiSpace!\n\nI have just placed a new booking online.\n*Reference ID:* #${bookingRef}\n*Name:* ${form.name}\n*Location:* ${form.location}\n*Service:* ${form.service}\n\nPlease confirm my schedule!`;
+      const message = `🌟 Hello Safihub!\n\nI have just placed a new booking online.\n*Reference ID:* #${bookingRef}\n*Name:* ${form.name}\n*Location:* ${form.location}\n*Service:* ${form.service}\n\nPlease confirm my schedule!`;
 
-      const dynamicUrl = `https://wa.me/${safiSpacePhone}?text=${encodeURIComponent(message)}`;
+      const dynamicUrl = `https://wa.me/${safihubPhone}?text=${encodeURIComponent(message)}`;
       setWhatsappLink(dynamicUrl);
     }
 

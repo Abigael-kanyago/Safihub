@@ -19,7 +19,7 @@ export default function WhyUs() {
           {/* Left image collage */}
           <div className="whyus-images reveal">
             <div className="img-collage-wrapper">
-              <img src="/images/collage.jpg" alt="Safispace Cleaning Examples" className="whyus-actual-img" />
+              <img src="/images/collage.jpg" alt="Safihub Cleaning Examples" className="whyus-actual-img" />
               {/* Floating cert badge */}
               <div className="cert-badge">
                 <span className="cert-num">500+</span>
@@ -31,7 +31,7 @@ export default function WhyUs() {
           {/* Right content */}
           <div className="whyus-content reveal reveal-delay-2">
             <span className="section-label">WHY CHOOSE US</span>
-            <h2 className="section-title">Why Customers<br />Trust SafiSpace</h2>
+            <h2 className="section-title">Why Customers<br />Trust Safihub</h2>
             <p className="section-sub" style={{ marginBottom: '36px' }}>
               We go beyond just cleaning. Every detail, every corner — handled with care, professionalism, and a genuine passion for cleanliness.
             </p>

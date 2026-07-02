@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Are your cleaners insured?',
-    a: 'Absolutely. All SafiSpace cleaners are background-checked, trained, and covered by our professional liability insurance. Your belongings and property are fully protected during every clean.',
+    a: 'Absolutely. All Safihub cleaners are background-checked, trained, and covered by our professional liability insurance. Your belongings and property are fully protected during every clean.',
   },
   {
     q: 'Can I request the same cleaner each time?',

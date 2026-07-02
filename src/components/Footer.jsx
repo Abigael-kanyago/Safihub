@@ -11,7 +11,7 @@ export default function Footer({ onBookNow }) {
             {/* Brand */}
             <div className="footer-brand">
               <div className="footer-logo">
-                <img src="/images/logo.jpg" alt="SafiSpace Logo" className="footer-logo-image" />
+                <img src="/images/logo.jpg" alt="Safihub Logo" className="footer-logo-image" />
               </div>
               <p>Reliable. Professional. Spotless. Your trusted cleaning partner across Nairobi and beyond.</p>
               <div className="footer-socials">
@@ -47,7 +47,7 @@ export default function Footer({ onBookNow }) {
               <h4>Contact</h4>
               <ul className="footer-contact-list">
                 <li><FaPhone /><a href="tel:+254700000000">+254 700 000 000</a></li>
-                <li><FaEnvelope /><a href="mailto:hello@safispace.co.ke">hello@safispace.co.ke</a></li>
+                <li><FaEnvelope /><a href="mailto:info@safihub.co.ke">info@safihub.co.ke</a></li>
                 <li><FaMapMarkerAlt /><span>Nairobi, Kenya</span></li>
               </ul>
               <button className="btn-primary footer-book" onClick={onBookNow}>Book Now →</button>
@@ -58,7 +58,7 @@ export default function Footer({ onBookNow }) {
       <div className="footer-bottom">
         <div className="container">
           <div className="footer-bottom-inner">
-            <p>© 2026 <strong>SafiSpace</strong> Cleaning Service. All Rights Reserved.</p>
+            <p>© 2026 <strong>Safihub</strong> Cleaning Service. All Rights Reserved.</p>
             <p>Made with ❤️ in Nairobi, Kenya</p>
           </div>
         </div>

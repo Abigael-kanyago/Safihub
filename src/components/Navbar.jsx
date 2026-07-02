@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaMapMarkerAlt, FaClock, FaEnvelope, FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaPhoneAlt } from 'react-icons/fa';
 import './Navbar.css';
 
-const links = ['Home','About Us','Services','Why Choose Us','Contact Us'];
+const links = ['Home','About Us','Services','How It Works','Pricing', 'Blog', 'Contact Us'];
 
 export default function Navbar({ onBookNow, onJoinUs }) {
   const [scrolled, setScrolled] = useState(false);
@@ -10,7 +10,7 @@ export default function Navbar({ onBookNow, onJoinUs }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -24,40 +24,64 @@ export default function Navbar({ onBookNow, onJoinUs }) {
   };
 
   return (
-    <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
-      <div className="nav-container">
-        {/* Logo */}
-        <a href="#home" className="nav-logo" onClick={() => setActive('Home')}>
-          <img src="/images/logo.jpg" alt="SafiSpace Logo" className="logo-image" />
-        </a>
-
-        {/* Desktop Nav */}
-        <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-          {links.map(link => (
-            <li key={link}>
-              <button
-                className={`nav-link${active === link ? ' active' : ''}`}
-                onClick={() => handleNav(link)}
-              >
-                {link}
-              </button>
-            </li>
-          ))}
-        </ul>
-
-        {/* Right */}
-        <div className="nav-right">
-          <button className="btn-outline nav-join" style={{ marginRight: '10px' }} onClick={onJoinUs}>
-            JOIN US
-          </button>
-          <button className="btn-primary nav-book" onClick={onBookNow}>
-            BOOK NOW
-          </button>
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
+    <header className="header-wrapper">
+      {/* Top Bar */}
+      <div className="top-bar">
+        <div className="top-bar-left">
+          <span><FaMapMarkerAlt /> Nairobi, Kenya</span>
+          <span><FaClock /> Mon - Sat: 7:00am - 7:00pm</span>
+        </div>
+        <div className="top-bar-right">
+          <span className="top-email"><FaEnvelope /> info@safihub.co.ke</span>
+          <div className="social-icons">
+            <a href="#facebook"><FaFacebookF /></a>
+            <a href="#instagram"><FaInstagram /></a>
+            <a href="#twitter"><FaTwitter /></a>
+            <a href="#linkedin"><FaLinkedinIn /></a>
+          </div>
         </div>
       </div>
-    </nav>
+
+      {/* Main Navbar */}
+      <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
+        <div className="nav-container">
+          {/* Logo Placeholder */}
+          <a href="#home" className="nav-logo" onClick={() => setActive('Home')}>
+            <div className="logo-placeholder">
+              <span className="logo-title">SAFI<span className="logo-highlight">HUB</span></span>
+              <span className="logo-subtitle">- CLEANING SERVICES -</span>
+            </div>
+          </a>
+
+          {/* Desktop Nav */}
+          <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
+            {links.map(link => (
+              <li key={link}>
+                <button
+                  className={`nav-link${active === link ? ' active' : ''}`}
+                  onClick={() => handleNav(link)}
+                >
+                  {link}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {/* Right */}
+          <div className="nav-right">
+            <div className="nav-call">
+              <div className="call-icon"><FaPhoneAlt /></div>
+              <div className="call-details">
+                <span className="call-label">Call Us Now</span>
+                <span className="call-number">0722 000 000</span>
+              </div>
+            </div>
+            <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 }

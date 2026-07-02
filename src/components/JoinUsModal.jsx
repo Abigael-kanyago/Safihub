@@ -81,7 +81,7 @@ export default function JoinUsModal({ open, onClose }) {
         <div className="modal-header">
           <div>
             <h2>Join Our Cleaning Team</h2>
-            <p>Apply to become a verified SafiSpace professional</p>
+            <p>Apply to become a verified Safihub professional</p>
           </div>
           <button className="modal-close" onClick={onClose}><FaTimes /></button>
         </div>

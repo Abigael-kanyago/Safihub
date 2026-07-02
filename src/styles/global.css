@@ -2,20 +2,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:    #001B5E;
-  --navy2:   #002C8C;
-  --navy3:   #001244;
-  --gold:    #FFC107;
-  --gold2:   #e6ac00;
+  --navy:    #002E5D;
+  --navy2:   #003c7a;
+  --navy3:   #001a36;
+  --green:   #4CAF50;
+  --green2:  #45a049;
   --white:   #FFFFFF;
   --light:   #F5F7FA;
   --dark:    #1A1A1A;
   --gray:    #6b7280;
   --lgray:   #e5e9f0;
-  --green:   #22c55e;
   --radius:  16px;
-  --shadow:  0 8px 32px rgba(0,27,94,0.12);
-  --shadow2: 0 20px 60px rgba(0,27,94,0.18);
+  --shadow:  0 8px 32px rgba(0,46,93,0.12);
+  --shadow2: 0 20px 60px rgba(0,46,93,0.18);
 }
 
 html { scroll-behavior: smooth; }
@@ -41,7 +40,7 @@ ul { list-style: none; }
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--navy3); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 3px; }
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
@@ -73,8 +72,8 @@ ul { list-style: none; }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,193,7,0.4); }
-  50%       { box-shadow: 0 0 0 14px rgba(255,193,7,0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76,175,80,0.4); }
+  50%       { box-shadow: 0 0 0 14px rgba(76,175,80,0); }
 }
 @keyframes rotateSlow {
   from { transform: rotate(0deg); }
@@ -107,7 +106,7 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--green);
   display: block;
   margin-bottom: 12px;
   font-family: 'Inter', sans-serif;
@@ -132,8 +131,8 @@ ul { list-style: none; }
 .btn-primary {
   position: relative;
   overflow: hidden;
-  background: var(--gold);
-  color: var(--navy);
+  background: var(--green);
+  color: var(--white);
   padding: 14px 32px;
   border-radius: 50px;
   font-weight: 700;
@@ -147,9 +146,9 @@ ul { list-style: none; }
   transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
 }
 .btn-primary:hover {
-  background: var(--gold2);
+  background: var(--green2);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255,193,7,0.4);
+  box-shadow: 0 8px 24px rgba(76,175,80,0.4);
 }
 .btn-primary::after {
   content: '';
@@ -177,8 +176,8 @@ ul { list-style: none; }
   transition: all 0.25s;
 }
 .btn-outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--green);
+  color: var(--green);
 }
 
 /* ── WHATSAPP FLOAT ── */
