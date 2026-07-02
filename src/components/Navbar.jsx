@@ -69,6 +69,9 @@ export default function Navbar({ onBookNow, onJoinUs }) {
 
           {/* Right */}
           <div className="nav-right">
+            <button className="btn-outline-green join-team-btn" onClick={onJoinUs} style={{ marginRight: '20px', padding: '10px 20px', borderRadius: '50px', fontWeight: 'bold', border: '2px solid var(--green)', color: 'var(--green)', backgroundColor: 'transparent', cursor: 'pointer' }}>
+              Join Our Team
+            </button>
             <div className="nav-call">
               <div className="call-icon"><FaPhoneAlt /></div>
               <div className="call-details">

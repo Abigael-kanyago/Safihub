@@ -22,7 +22,7 @@ export default function Footer({ onBookNow }) {
                 <a href="#" aria-label="Facebook"><FaFacebookF /></a>
                 <a href="#" aria-label="Instagram"><FaInstagram /></a>
                 <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
-                <a href="https://wa.me/254700000000" aria-label="WhatsApp"><FaWhatsapp /></a>
+                <a href="https://wa.me/254706151837" aria-label="WhatsApp"><FaWhatsapp /></a>
               </div>
             </div>
 
@@ -50,7 +50,7 @@ export default function Footer({ onBookNow }) {
             <div className="footer-col">
               <h4>Contact</h4>
               <ul className="footer-contact-list">
-                <li><FaPhone /><a href="tel:+254700000000">+254 700 000 000</a></li>
+                <li><FaPhone /><a href="tel:+254706151837">+254 706 151 837</a></li>
                 <li><FaEnvelope /><a href="mailto:info@safihub.co.ke">info@safihub.co.ke</a></li>
                 <li><FaMapMarkerAlt /><span>Nairobi, Kenya</span></li>
               </ul>

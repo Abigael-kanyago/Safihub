@@ -187,3 +187,6 @@
 @media (max-width: 600px) {
   .nav-call { display: none; }
 }
+
+.join-team-btn { transition: all 0.3s ease; }
+.join-team-btn:hover { background-color: var(--green) !important; color: white !important; box-shadow: 0 4px 15px rgba(83, 165, 33, 0.4); }

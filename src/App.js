@@ -8,6 +8,7 @@ import Contact      from './components/Contact';
 import Footer       from './components/Footer';
 import BookingModal from './components/BookingModal';
 import JoinUsModal  from './components/JoinUsModal';
+import JoinUsCTA    from './components/JoinUsCTA';
 import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
       <Services onBookNow={openBooking} />
       <WhyUs />
       <Contact />
+      <JoinUsCTA onJoinUs={() => setJoinUsOpen(true)} />
       <Footer onBookNow={() => openBooking()} />
 
       <BookingModal
@@ -45,7 +47,7 @@ export default function App() {
 
       {/* WhatsApp Float */}
       <a
-        href="https://wa.me/254700000000?text=Hello%20Safihub!%20I'd%20like%20to%20book%20a%20cleaning%20service."
+        href="https://wa.me/254706151837?text=Hello%20Safihub!%20I'd%20like%20to%20book%20a%20cleaning%20service."
         target="_blank"
         rel="noreferrer"
         className="wa-float"

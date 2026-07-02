@@ -29,7 +29,6 @@ export default function JoinUsModal({ open, onClose }) {
     e.preventDefault();
     setErrorMsg('');
 
-    // Basic validation - stop if required fields are empty
     if (!form.name || !form.phone || !form.experience || !form.location) {
       setErrorMsg('Please fill in all required fields.');
       return;
@@ -37,41 +36,20 @@ export default function JoinUsModal({ open, onClose }) {
 
     setIsSubmitting(true);
 
-    try {
-      // Send the data to your Supabase table
-      const { data, error } = await supabase
-        .from('cleaner_applications')
-        .insert([
-          {
-            full_name: form.name,
-            phone_number: form.phone,
-            email: form.email || null,
-            location: form.location,
-            experience: form.experience,
-            about: form.about || null
-          }
-        ]);
+    // Bypass dead database completely to prevent freezing!
+    const safihubPhone = "254706151837"; 
+    const cvText = form.cvName ? `\n*CV:* I will attach my CV (${form.cvName}) in this chat.` : '';
+    const message = `🌟 Hello Safihub!\n\nI would like to apply to be a cleaner.\n*Name:* ${form.name}\n*Location:* ${form.location}\n*Experience:* ${form.experience}${cvText}\n\nPlease review my application!`;
 
-      if (error) throw error;
-
-      // If successful, log it and trigger the success view
-      console.log('Application saved successfully');
-      setDone(true);
-
-    } catch (err) {
-      console.error('Error saving application:', err.message);
-      // Fallback: If table doesn't exist or RLS fails, still show success for now
-      // since this is a demo environment, but log the actual error.
-      if (err.message.includes('relation "cleaner_applications" does not exist') || err.message.includes('row-level security') || err.code === '42P01' || err.code === '42501') {
-        console.warn('Fallback: bypassing Supabase error for demo purposes.');
-        setDone(true);
-      } else {
-        setErrorMsg(err.message || 'An error occurred while submitting your application.');
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
+    const dynamicUrl = `https://wa.me/${safihubPhone}?text=${encodeURIComponent(message)}`;
+    
+    // We add whatsappLink dynamically to the component state
+    setWhatsappLink(dynamicUrl);
+    setDone(true);
+    setIsSubmitting(false);
   };
+
+  const [whatsappLink, setWhatsappLink] = useState('https://wa.me/254706151837');
 
   if (!open) return null;
 
@@ -90,8 +68,13 @@ export default function JoinUsModal({ open, onClose }) {
           {done ? (
             <div className="booking-success">
               <FaCheckCircle className="success-check" />
-              <h3>Application Received!</h3>
-              <p>Thank you, {form.name}! We will review your application and contact you soon.</p>
+              <h3>Application Ready!</h3>
+              <p>Thank you, {form.name}! Click below to send your application to our WhatsApp.</p>
+              
+              <a href={whatsappLink} target="_blank" rel="noreferrer" className="btn-primary" style={{ display: 'inline-flex', gap: 8, marginTop: 20 }}>
+                💬 Send Application on WhatsApp
+              </a>
+
               <button className="btn-close-done" onClick={onClose}>Close</button>
             </div>
           ) : (
@@ -133,8 +116,17 @@ export default function JoinUsModal({ open, onClose }) {
               </div>
 
               <div className="form-group">
-                <label>Tell us about your previous cleaning jobs</label>
-                <textarea name="about" value={form.about} onChange={handle} rows={3} placeholder="E.g., I have worked for cleaning companies, or private homes..." />
+                <label>Attach your CV (Optional)</label>
+                <input 
+                  type="file" 
+                  name="cv" 
+                  onChange={(e) => setForm({...form, cvName: e.target.files[0]?.name || ''})} 
+                  accept=".pdf,.doc,.docx" 
+                  style={{ padding: '10px 0' }}
+                />
+                <small style={{display: 'block', marginTop: '6px', color: 'var(--gray)', fontSize: '12px', fontStyle: 'italic'}}>
+                  * Note: For security reasons, you will need to manually attach this file again when WhatsApp opens.
+                </small>
               </div>
 
               {errorMsg && <div className="error-message" style={{ color: 'red', marginBottom: '10px', textAlign: 'center', fontWeight: 'bold' }}>{errorMsg}</div>}

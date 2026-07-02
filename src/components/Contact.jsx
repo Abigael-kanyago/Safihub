@@ -3,7 +3,7 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'reac
 import './Contact.css';
 
 const contactInfo = [
-  { icon: <FaPhone />,         label: 'Phone',         val: '+254 700 000 000',         href: 'tel:+254700000000' },
+  { icon: <FaPhone />,         label: 'Phone',         val: '+254 706 151 837',         href: 'tel:+254706151837' },
   { icon: <FaEnvelope />,      label: 'Email',         val: 'info@safihub.co.ke',    href: 'mailto:info@safihub.co.ke' },
   { icon: <FaMapMarkerAlt />,  label: 'Address',       val: 'Nairobi, Kenya',           href: '#' },
   { icon: <FaClock />,         label: 'Working Hours', val: 'Mon–Sat: 7am – 7pm',      href: '#' },
@@ -55,7 +55,7 @@ export default function Contact() {
               ))}
             </div>
             <div className="contact-wa">
-              <a href="https://wa.me/254700000000?text=Hello%20Safihub!" target="_blank" rel="noreferrer" className="btn-primary wa-btn">
+              <a href="https://wa.me/254706151837?text=Hello%20Safihub!" target="_blank" rel="noreferrer" className="btn-primary wa-btn">
                 💬 Chat on WhatsApp
               </a>
             </div>
