@@ -11,7 +11,11 @@ export default function Footer({ onBookNow }) {
             {/* Brand */}
             <div className="footer-brand">
               <div className="footer-logo">
-                <img src="/images/logo.jpg" alt="Safihub Logo" className="footer-logo-image" />
+                <img
+                  src={`${process.env.PUBLIC_URL}/images/logo.jpg`}
+                  alt="Safihub Logo"
+                  className="footer-logo-image"
+                />
               </div>
               <p>Reliable. Professional. Spotless. Your trusted cleaning partner across Nairobi and beyond.</p>
               <div className="footer-socials">

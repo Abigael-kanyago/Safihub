@@ -45,12 +45,12 @@ export default function Navbar({ onBookNow, onJoinUs }) {
       {/* Main Navbar */}
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-container">
-          {/* Logo Placeholder */}
           <a href="#home" className="nav-logo" onClick={() => setActive('Home')}>
-            <div className="logo-placeholder">
-              <span className="logo-title">SAFI<span className="logo-highlight">HUB</span></span>
-              <span className="logo-subtitle">- CLEANING SERVICES -</span>
-            </div>
+            <img
+              src={`${process.env.PUBLIC_URL}/images/logo.jpg`}
+              alt="Safihub Logo"
+              className="nav-logo-image"
+            />
           </a>
 
           {/* Desktop Nav */}

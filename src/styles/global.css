@@ -2,11 +2,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:    #002E5D;
-  --navy2:   #003c7a;
-  --navy3:   #001a36;
-  --green:   #4CAF50;
-  --green2:  #45a049;
+  --navy:    #0B3A6C;
+  --navy2:   #082D54;
+  --navy3:   #051B33;
+  --green:   #53A521;
+  --green2:  #44891A;
   --white:   #FFFFFF;
   --light:   #F5F7FA;
   --dark:    #1A1A1A;
