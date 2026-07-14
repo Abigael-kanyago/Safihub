@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { FaCalendarAlt, FaCheckCircle, FaArrowRight, FaShieldAlt, FaLeaf, FaMedal, FaDollarSign } from 'react-icons/fa';
+﻿import React, { useState, useEffect } from 'react';
+import { FaArrowRight, FaCheckCircle, FaClock, FaMapMarkerAlt, FaShieldAlt, FaUserTie } from 'react-icons/fa';
 import './Hero.css';
 
 const badges = [
-  { icon: <FaShieldAlt />, label: 'Trained &\nVerified Staff' },
-  { icon: <FaLeaf />, label: 'Eco-Friendly\nProducts' },
-  { icon: <FaMedal />, label: 'Satisfaction\nGuaranteed' },
-  { icon: <FaDollarSign />, label: 'Affordable\nPricing' },
+  { icon: <FaShieldAlt />, label: 'Vetted cleaners' },
+  { icon: <FaClock />, label: 'Same-day slots' },
+  { icon: <FaCheckCircle />, label: 'Quality checked' },
 ];
 
 const heroImages = [
@@ -16,7 +15,7 @@ const heroImages = [
 
 ];
 
-export default function Hero({ onBookNow }) {
+export default function Hero({ onBookNow, onJoinUs }) {
   const [currentImg, setCurrentImg] = useState(0);
 
   useEffect(() => {
@@ -33,47 +32,40 @@ export default function Hero({ onBookNow }) {
         {/* Left Side: Content */}
         <div className="hero-content">
           <div className="hero-subtitle">
-            <span className="subtitle-bar"></span>
-            PROFESSIONAL CLEANING SERVICES FOR
+            <FaMapMarkerAlt />
+            Nairobi's flexible cleaning booking platform
           </div>
 
           <h1 className="hero-title">
-            <span className="navy-text">CLEAN SPACES.</span><br />
-            <span className="green-text">BETTER LIVING.</span>
+            <span className="navy-text">Cleaning made simple.</span><br />
+            <span className="green-text">Spaces made fresh.</span>
           </h1>
 
           <p className="hero-desc">
-            We provide reliable and eco-friendly cleaning solutions for homes, offices, and commercial spaces.
+            Safihub connects busy homes, offices, and businesses with trained cleaners you can trust.
+            Choose your service, pick a time, and relax while the clean team handles the rest.
           </p>
 
           <div className="hero-actions">
             <button className="btn-navy" onClick={onBookNow}>
               Book a Service <FaArrowRight />
             </button>
-            <button className="btn-outline-navy" onClick={() => {
-              const el = document.getElementById('services');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}>
-              Our Services <FaArrowRight />
+            <button className="btn-outline-navy" onClick={onJoinUs}>
+              Join as a Cleaner <FaUserTie />
             </button>
           </div>
 
-          <div className="hero-badges">
-            {badges.map((b, i) => (
-              <div className="badge-item" key={i}>
-                <div className="badge-icon">{b.icon}</div>
-                <div className="badge-label">{b.label}</div>
+          <div className="hero-trust-row" aria-label="Safihub service highlights">
+            {badges.map((badge) => (
+              <div className="hero-trust-item" key={badge.label}>
+                <span>{badge.icon}</span>
+                {badge.label}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right Side: Image and Widget */}
         <div className="hero-visual">
-          {/* Decorative Blobs */}
-          <div className="blob blob-1"></div>
-          <div className="blob blob-2"></div>
-
           <div className="hero-image-wrapper">
             {heroImages.map((src, index) => (
               <img
@@ -104,3 +96,4 @@ export default function Hero({ onBookNow }) {
     </section>
   );
 }
+

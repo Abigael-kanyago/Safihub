@@ -30,7 +30,7 @@ export default function Footer({ onBookNow }) {
             <div className="footer-col">
               <h4>Quick Links</h4>
               <ul>
-                {['Home','About Us','Services','Why Choose Us','Contact Us'].map(l => (
+                {['Home','About Us','Services','Contact Us'].map(l => (
                   <li key={l}><a href={`#${l.toLowerCase().replace(/\s+/g,'-')}`}>{l}</a></li>
                 ))}
               </ul>

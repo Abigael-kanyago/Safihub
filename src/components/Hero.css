@@ -1,18 +1,20 @@
 .hero {
-  min-height: 100vh;
-  background: radial-gradient(circle at top left, #f3faeb 0%, #fff 40%);
+  min-height: 86vh;
+  background:
+    linear-gradient(135deg, rgba(83, 165, 33, 0.09), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbf4 100%);
   display: flex;
   align-items: center;
-  padding-top: 100px; /* space for navbar */
+  padding-top: 88px; /* space for navbar */
 }
 
 .hero-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 40px 32px;
+  padding: 32px 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 36px;
   align-items: center;
 }
 
@@ -24,44 +26,44 @@
 }
 
 .hero-subtitle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: var(--green);
+  gap: 10px;
+  color: var(--navy);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 0;
   margin-bottom: 24px;
-}
-.subtitle-bar {
-  width: 4px;
-  height: 16px;
-  background: var(--green);
-  border-radius: 2px;
+  background: #ffffff;
+  border: 1px solid rgba(83, 165, 33, 0.22);
+  border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(11, 58, 108, 0.07);
+  padding: 10px 16px;
+  width: fit-content;
 }
 
 .hero-title {
-  font-size: clamp(48px, 5.5vw, 76px);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 900;
   line-height: 1.05;
-  margin-bottom: 24px;
-  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+  letter-spacing: 0;
 }
 .navy-text { color: var(--navy); }
 .green-text { color: var(--green); }
 
 .hero-desc {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--gray);
   line-height: 1.6;
-  max-width: 480px;
-  margin-bottom: 40px;
+  max-width: 420px;
+  margin-bottom: 32px;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 .btn-navy {
   background: var(--navy);
@@ -99,76 +101,48 @@
   color: #fff;
 }
 
-.hero-badges {
+.hero-trust-row {
   display: flex;
-  gap: 20px;
+  gap: 12px;
   flex-wrap: wrap;
 }
-.badge-item {
-  display: flex;
+.hero-trust-item {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #fff;
-  padding: 10px 16px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-  border: 1px solid var(--lgray);
-}
-.badge-icon {
-  color: var(--green);
-  font-size: 20px;
-}
-.badge-label {
-  font-size: 11px;
-  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(11, 58, 108, 0.06);
+  border: 1px solid rgba(11, 58, 108, 0.08);
+  font-size: 13px;
+  font-weight: 800;
   color: var(--navy);
-  line-height: 1.2;
+}
+.hero-trust-item span {
+  color: var(--green);
+  display: inline-flex;
 }
 
 /* RIGHT SIDE */
 .hero-visual {
   position: relative;
-  height: 650px;
+  height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fadeIn 1s 0.3s ease both;
 }
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-  opacity: 0.6;
-  animation: rotateSlow 20s linear infinite;
-}
-.blob-1 {
-  width: 400px;
-  height: 400px;
-  background: var(--navy);
-  top: -50px;
-  right: -50px;
-}
-.blob-2 {
-  width: 350px;
-  height: 350px;
-  background: var(--green);
-  bottom: -20px;
-  left: -20px;
-  animation-direction: reverse;
-  animation-duration: 25s;
-}
-
 .hero-image-wrapper {
   position: relative;
   width: 85%;
   height: 90%;
-  border-radius: 200px 200px 24px 24px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(11, 58, 108, 0.2);
+  box-shadow: 0 24px 48px rgba(11, 58, 108, 0.18);
   z-index: 1;
-  border: 8px solid #fff;
+  border: 6px solid #fff;
   animation: float 6s ease-in-out infinite;
 }
 
@@ -314,7 +288,7 @@
     gap: 60px;
   }
   .hero-visual {
-    height: 500px;
+    height: 420px;
     justify-content: center;
   }
   .booking-widget {
@@ -322,8 +296,10 @@
   }
 }
 @media (max-width: 768px) {
-  .hero-badges { display: none; }
+  .hero-trust-row { display: none; }
   .booking-widget { display: none; }
   .hero-visual { height: 400px; }
   .hero-image-wrapper { width: 100%; }
+  .hero-actions { flex-direction: column; }
+  .btn-navy, .btn-outline-navy { justify-content: center; width: 100%; }
 }

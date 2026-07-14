@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaStar } from 'react-icons/fa';
 import './WhyUs.css';
 
 const reasons = [
@@ -13,15 +13,17 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className="whyus-section" id="why-choose-us">
+    <section className="whyus-section" id="about-us">
       <div className="container">
         <div className="whyus-inner">
           {/* Left image collage */}
           <div className="whyus-images reveal">
             <div className="img-collage-wrapper">
+              <div className="collage-bg-shape"></div>
               <img src="/images/collage.jpg" alt="Safihub Cleaning Examples" className="whyus-actual-img" />
               {/* Floating cert badge */}
               <div className="cert-badge">
+                <FaStar className="cert-star" />
                 <span className="cert-num">500+</span>
                 <span className="cert-label">Jobs Done</span>
               </div>
@@ -30,19 +32,21 @@ export default function WhyUs() {
 
           {/* Right content */}
           <div className="whyus-content reveal reveal-delay-2">
-            <span className="section-label">WHY CHOOSE US</span>
-            <h2 className="section-title">Why Customers<br />Trust Safihub</h2>
-            <p className="section-sub" style={{ marginBottom: '36px' }}>
-              We go beyond just cleaning. Every detail, every corner — handled with care, professionalism, and a genuine passion for cleanliness.
+            <div className="section-label-glass">
+              <span className="pulse-dot"></span> WHY CHOOSE US
+            </div>
+            <h2 className="section-title gradient-text">Why Customers<br />Trust Safihub</h2>
+            <p className="section-sub" style={{ marginBottom: '40px', fontSize: '16px' }}>
+              We go beyond just cleaning. Every detail, every corner — handled with care, professionalism, and a genuine passion for cleanliness. Experience the premium difference.
             </p>
-            <ul className="whyus-list">
+            <div className="whyus-grid">
               {reasons.map((r, i) => (
-                <li key={i} className="whyus-item">
-                  <span className="check-icon"><FaCheckCircle /></span>
-                  <span>{r}</span>
-                </li>
+                <div key={i} className="whyus-card">
+                  <div className="whyus-card-icon"><FaCheckCircle /></div>
+                  <span className="whyus-card-text">{r}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

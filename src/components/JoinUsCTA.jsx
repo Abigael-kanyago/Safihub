@@ -11,7 +11,7 @@ export default function JoinUsCTA({ onJoinUs }) {
         <div className="join-cta-visual">
           <div className="visual-backdrop"></div>
           <img 
-            src={`${process.env.PUBLIC_URL}/images/hero_1.jpg`} 
+            src={`${process.env.PUBLIC_URL}/images/join_us.jpeg`} 
             alt="Professional Cleaner" 
             className="visual-image" 
           />

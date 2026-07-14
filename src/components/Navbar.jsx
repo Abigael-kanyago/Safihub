@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes, FaMapMarkerAlt, FaClock, FaEnvelope, FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaPhoneAlt } from 'react-icons/fa';
 import './Navbar.css';
 
-const links = ['Home','About Us','Services','How It Works','Pricing', 'Blog', 'Contact Us'];
+const links = ['Home','About Us','Services', 'Contact Us'];
 
 export default function Navbar({ onBookNow, onJoinUs }) {
   const [scrolled, setScrolled] = useState(false);
