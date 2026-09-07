@@ -17,12 +17,12 @@ export default function JoinUsCTA({ onJoinUs }) {
           />
           {/* Floating elements for creativity */}
           <div className="floating-badge top-badge">
-            <FaStar className="badge-icon gold" />
-            <div className="badge-text">Top Earners</div>
+            
+          
           </div>
           <div className="floating-badge bottom-badge">
-            <FaCheckCircle className="badge-icon green" />
-            <div className="badge-text">Verified</div>
+            
+            
           </div>
         </div>
 

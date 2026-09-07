@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import WhyUs from './components/WhyUs';
+import Process from './components/Process';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
@@ -33,8 +34,9 @@ export default function App() {
         <Navbar onBookNow={() => openBooking()} onJoinUs={() => setJoinUsOpen(true)} />
         <Hero onBookNow={() => openBooking()} onJoinUs={() => setJoinUsOpen(true)} />
         <Services onBookNow={openBooking} />
-        <JoinUsCTA onJoinUs={() => setJoinUsOpen(true)} />
         <WhyUs />
+        <Process />
+        <JoinUsCTA onJoinUs={() => setJoinUsOpen(true)} />
         <Contact />
         <Footer onBookNow={() => openBooking()} />
 

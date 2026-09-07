@@ -1,0 +1,396 @@
+.process-section {
+  padding: 100px 0 80px;
+  background:
+    radial-gradient(circle at top left, rgba(83, 165, 33, 0.12), transparent 28%),
+    var(--light);
+}
+
+.process-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.process-header {
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+
+.process-label {
+  display: inline-flex;
+  padding: 10px 22px;
+  background: rgba(83, 165, 33, 0.12);
+  color: var(--green);
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.process-title {
+  font-size: 42px;
+  color: var(--navy);
+  margin: 0 0 18px;
+  line-height: 1.08;
+}
+
+.process-copy {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--gray);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.process-deck {
+  position: relative;
+  min-height: 400px;
+  padding-top: 16px;
+}
+
+.process-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 140px;
+  margin-top: -70px;
+  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg width='960' height='140' viewBox='0 0 960 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 90 C250 10 450 160 650 90 S840 90 930 90' fill='none' stroke='%23cbd1db' stroke-width='6' stroke-dasharray='16 14' stroke-linecap='round'/%3E%3C/svg%3E");
+  opacity: 0.85;
+}
+
+.process-step-wrapper {
+  position: absolute;
+  width: 210px;
+  text-align: center;
+}
+
+.process-step-card {
+  width: 100%;
+  min-height: 300px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #2f7d1d 0%, #69b24b 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 14px 18px;
+  box-shadow: 0 18px 32px rgba(15, 30, 50, 0.16);
+  transform-origin: center;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.step-icon svg {
+  color: #fff;
+}
+
+.step-graphic {
+  width: 100%;
+  min-height: 70px;
+  display: grid;
+  gap: 5px;
+}
+
+.step-calendar,
+.step-form,
+.step-relax {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 8px;
+  color: #0b3a6c;
+  box-shadow: inset 0 0 0 1px rgba(15, 30, 50, 0.08);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.calendar-header span {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.calendar-header strong {
+  font-size: 18px;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.calendar-day-header {
+  font-size: 8px;
+  font-weight: 700;
+  color: #5c6b7a;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-cell {
+  width: 100%;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: #0b3a6c;
+  background: rgba(255,255,255,0.8);
+  border-radius: 6px;
+  border: 1px solid rgba(15, 30, 50, 0.06);
+}
+
+.calendar-cell-empty {
+  background: transparent;
+  border-color: transparent;
+}
+
+.calendar-cell-active {
+  background: #1f5b0a;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.8);
+}
+
+.step-form {
+  background: rgba(83, 165, 33, 0.12);
+  border-radius: 20px;
+  padding: 12px;
+  color: #0b3a6c;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 11px;
+  opacity: 0.95;
+}
+
+.form-input {
+  flex: 1;
+  height: 16px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.18);
+}
+
+.form-checked {
+  margin-top: 6px;
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f5b0a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.step-relax {
+  position: relative;
+  background: rgba(83, 165, 33, 0.12);
+  border-radius: 20px;
+  padding: 12px;
+  min-height: 110px;
+}
+
+.relax-lounge {
+  width: 100%;
+  height: 40px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.4);
+  margin-bottom: 8px;
+}
+
+.relax-sun {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.relax-plant {
+  width: 12px;
+  height: 36px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  position: absolute;
+  bottom: 14px;
+  left: 12px;
+}
+
+.relax-ribbon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #1f5b0a;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.relax-smile {
+  position: absolute;
+  right: 16px;
+  bottom: 18px;
+  font-size: 24px;
+  color: #1f5b0a;
+}
+
+.step-body {
+  width: 100%;
+  margin-top: 6px;
+  text-align: left;
+}
+
+.step-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.step-description {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.step-1 {
+  left: 0;
+  top: 18px;
+}
+
+.step-2 {
+  left: calc(50% - 105px);
+  top: 0;
+}
+
+.step-3 {
+  right: 0;
+  top: 18px;
+}
+
+.step-1 .process-step-card {
+  transform: rotate(-8deg);
+}
+
+.step-2 .process-step-card {
+  transform: rotate(4deg);
+}
+
+.step-3 .process-step-card {
+  transform: rotate(-6deg);
+}
+
+@media (max-width: 1024px) {
+  .process-line {
+    background-size: auto 100%;
+  }
+
+  .step-1 {
+    left: 8%;
+  }
+
+  .step-2 {
+    left: calc(50% - 105px);
+  }
+
+  .step-3 {
+    right: 8%;
+  }
+}
+
+@media (max-width: 760px) {
+  .process-section {
+    padding: 80px 0;
+  }
+
+  .process-deck {
+    min-height: auto;
+  }
+
+  .process-line {
+    display: none;
+  }
+
+  .process-step-wrapper {
+    position: static;
+    width: 100%;
+    margin: 0 auto 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .process-step-card {
+    transform: none !important;
+  }
+
+  .step-1,
+  .step-2,
+  .step-3 {
+    left: auto;
+    right: auto;
+    top: auto;
+  }
+}

@@ -1,86 +1,96 @@
-import React from 'react';
-import { FaHome, FaBuilding, FaBug, FaTshirt, FaSeedling, FaTrashAlt, FaArrowRight } from 'react-icons/fa';
+import React, { useState } from 'react';
 import './Services.css';
 
 const services = [
   {
-    icon: <FaHome />,
-    title: 'Home Cleaning',
-    desc: 'Deep and regular cleaning to keep your home sparkling clean.',
-    theme: { color: '#3B82F6', bg: 'rgba(59, 130, 246, 0.1)' } // Blue
+    title: 'House Cleaning',
+    image: '/images/deepcleaning.jpeg',
+    description: 'Complete home cleaning for kitchens, living rooms, bedrooms, and bathrooms using gentle, effective products.',
+    features: ['Daily and deep cleaning', 'Dust, vacuum, mop', 'Eco-friendly solutions', 'Consistent quality']
   },
   {
-    icon: <FaBuilding />,
     title: 'Office Cleaning',
-    desc: 'Professional cleaning services for a productive work environment.',
-    theme: { color: '#8B5CF6', bg: 'rgba(139, 92, 246, 0.1)' } // Purple
+    image: '/images/hero_2.jpg',
+    description: 'Office cleaning for desks, meeting rooms and lobby areas that keeps your workspace neat and ready for visitors.',
+    features: ['Sanitize desks and surfaces', 'Refresh common areas', 'Restroom maintenance', 'Flexible timing']
   },
   {
-    icon: <FaBug />,
-    title: 'Fumigation & Pest Control',
-    desc: 'Safe and effective pest control solutions for your space.',
-    theme: { color: '#EF4444', bg: 'rgba(239, 68, 68, 0.1)' } // Red
+    title: 'Deep Cleaning',
+    image: '/images/hero_3.jpg',
+    description: 'A top-to-bottom refresh for kitchens, bathrooms and hard-to-reach spaces to remove hidden dirt and grime.',
+    features: ['Kitchen scrub', 'Bathroom detail clean', 'Baseboard and trim care', 'Thorough surface treatment']
   },
   {
-    icon: <FaTshirt />,
-    title: 'Laundry Services',
-    desc: 'Reliable laundry and ironing services delivered on time.',
-    theme: { color: '#06B6D4', bg: 'rgba(6, 182, 212, 0.1)' } // Cyan
+    title: 'Move-In/Move-Out Cleaning',
+    image: '/images/moving%20inout.jpeg',
+    description: 'Move-in and move-out cleaning for homes and apartments, leaving every room ready for the next occupant.',
+    features: ['Cabinets and appliances', 'Floors and windows', 'Closets and shelves', 'Inspection-ready finish']
   },
   {
-    icon: <FaSeedling />,
-    title: 'Landscaping',
-    desc: 'Keep your outdoor spaces beautiful, green and well maintained.',
-    theme: { color: '#10B981', bg: 'rgba(16, 185, 129, 0.1)' } // Emerald
-  },
-  {
-    icon: <FaTrashAlt />,
-    title: 'Waste Management',
-    desc: 'Efficient waste collection and disposal for homes and businesses.',
-    theme: { color: '#F59E0B', bg: 'rgba(245, 158, 11, 0.1)' } // Amber
+    title: 'After Construction Cleaning',
+    image: '/images/construction.jpeg',
+    description: 'Post-construction cleanup designed to remove dust, debris and residue so the space looks polished and complete.',
+    features: ['Dust and debris removal', 'Surface and fixture wipe-down', 'Detail cleaning', 'Safe disposal']
   },
 ];
 
 export default function Services({ onBookNow }) {
+  const [active, setActive] = useState(0);
+
+  const selected = services[active] || services[0];
+
   return (
     <section className="services-section" id="services">
-      <div className="services-bg-pattern"></div>
+      <div className="services-dynamic-bg">
+        <div className="services-blob services-blob-1"></div>
+        <div className="services-blob services-blob-2"></div>
+      </div>
+
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        
+
         <div className="services-header text-center reveal">
           <span className="section-label">OUR SERVICES</span>
-          <h2 className="section-title">What We Offer</h2>
-          <p className="section-sub">We provide a comprehensive range of premium cleaning and maintenance services tailored to your specific needs.</p>
+          <h2 className="section-title">We offer the following cleaning services</h2>
+          
         </div>
 
-        <div className="services-grid">
-          {services.map((s, i) => (
-            <div 
-              className="service-card reveal" 
-              style={{ 
-                animationDelay: `${i * 0.1}s`,
-                '--icon-color': s.theme.color,
-                '--icon-bg': s.theme.bg
-              }} 
-              key={i}
-            >
-              <div className="service-card-inner">
-                <div className="service-icon-wrapper">
-                  <div className="service-icon">{s.icon}</div>
-                </div>
-                <h3 className="service-name">{s.title}</h3>
-                <p className="service-desc">{s.desc}</p>
-                <div className="service-footer">
-                  <button 
-                    className="service-link" 
-                    onClick={() => onBookNow(s.title)}
-                  >
-                    <span>Learn More</span> <FaArrowRight className="link-icon" />
-                  </button>
-                </div>
+        <div className="services-card">
+          <div className="services-tabs-wrapper">
+            <div className="services-tabs" role="tablist" aria-label="Service types">
+              {services.map((s, i) => (
+                <button
+                  key={i}
+                  className={`service-pill ${i === active ? 'active' : ''}`}
+                  onClick={() => setActive(i)}
+                  role="tab"
+                  aria-selected={i === active}
+                >
+                  {s.title}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="services-detail reveal">
+            <div className="services-info">
+              <h3 className="services-detail-title">{selected.title}</h3>
+              <p className="services-detail-desc">{selected.description}</p>
+
+              <ul className="services-checklist">
+                {selected.features.map((feature, i) => (
+                  <li key={i}>{feature}</li>
+                ))}
+              </ul>
+
+              <div className="services-cta-row">
+                <button className="btn-primary" onClick={() => onBookNow && onBookNow(selected.title)}>Book Now</button>
               </div>
             </div>
-          ))}
+
+            <div className="services-image">
+              <img src={selected.image} alt={selected.title} />
+            </div>
+          </div>
         </div>
 
       </div>

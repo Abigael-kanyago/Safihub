@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaArrowRight, FaCheckCircle, FaClock, FaMapMarkerAlt, FaShieldAlt, FaUserTie } from 'react-icons/fa';
 import './Hero.css';
 
